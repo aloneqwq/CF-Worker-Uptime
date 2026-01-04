@@ -378,6 +378,21 @@
                         }
 
                         config.value = await configRes.json();
+                        const rawStatus = await statusRes.json();
+                        
+                        // Update statusData FIRST
+                        // Merge with existing data to preserve chart state
+                        statusData.value = rawStatus.map(group => ({
+                            ...group,
+                            monitors: group.monitors.map(m => {
+                                const existingGroup = statusData.value.find(g => g.id === group.id);
+                                const existingMonitor = existingGroup?.monitors.find(em => em.id === m.id);
+                                return {
+                                    ...m,
+                                    showChart: existingMonitor ? existingMonitor.showChart : false
+                                };
+                            })
+                        }));
                         
                         // Process Incidents
                         // Filter active incidents (or upcoming scheduled ones)
@@ -427,21 +442,6 @@
                             link.href = config.value.settings.logo;
                             document.getElementsByTagName('head')[0].appendChild(link);
                         }
-
-                        const rawStatus = await statusRes.json();
-                        
-                        // Merge with existing data to preserve chart state if possible, or just reset
-                        // For simplicity, we just reload data but keep showChart flag if we match IDs
-                        // Actually, mapping to new array might lose 'showChart' property if we are not careful.
-                        // We need to initialize 'showChart' property.
-                        
-                        statusData.value = rawStatus.map(group => ({
-                            ...group,
-                            monitors: group.monitors.map(m => ({
-                                ...m,
-                                showChart: false 
-                            }))
-                        }));
                         
                         lastUpdated.value = new Date().toLocaleString();
                     } catch (e) {
