@@ -60,7 +60,7 @@ groups:
           status: 200
 
       - id: "blog_eo"
-        name: "Blog CN"
+        name: "博客国内节点"
         tags: [eopage]
         type: "http"
         url: "https://eo-blog.acofork.com/"
@@ -75,7 +75,7 @@ groups:
           status: 200
 
       - id: "blog_cf"
-        name: "博客（Cloudflare Pages海外节点）"
+        name: "博客海外节点"
         tags: [cfp]
         type: "http"
         url: "https://cf-blog.acofork.com/"
@@ -90,7 +90,7 @@ groups:
           status: 200
 
       - id: "umami_nas"
-        name: "Umami（NAS）"
+        name: "Umami 生产环境"
         tags: [eo,self]
         type: "http"
         url: "https://umami.acofork.com/"
@@ -105,7 +105,7 @@ groups:
           status: 200
 
       - id: "vw_nas"
-        name: "VaultWarden（NAS）"
+        name: "VaultWarden"
         tags: [eo,self]
         type: "http"
         url: "https://vw.acofork.com/"
@@ -120,7 +120,7 @@ groups:
           status: 200
 
       - id: "pan_nas"
-        name: "OpenList（NAS）"
+        name: "OpenList"
         tags: [eo,self]
         type: "http"
         url: "https://pan.acofork.com/"
@@ -135,7 +135,7 @@ groups:
           status: 200
 
       - id: "fnos_nas"
-        name: "飞牛（NAS）"
+        name: "飞牛 OS"
         tags: [eo,self]
         type: "http"
         url: "https://nas.acofork.com/"
@@ -150,7 +150,7 @@ groups:
           status: 200
 
       - id: "gh_proxy_eo"
-        name: "Github 代理（EdgeOne）"
+        name: "Github 代理"
         tags: [eopf]
         type: "http"
         url: "https://gh.072103.xyz/"
@@ -165,7 +165,7 @@ groups:
           status: 200
 
       - id: "gh_proxy_cf"
-        name: "Github 代理（Cloudflare）"
+        name: "Github 代理"
         tags: [cfw]
         type: "http"
         url: "https://cf-gh.072103.xyz/"
@@ -179,8 +179,23 @@ groups:
         validation:
           status: 200
 
+      - id: "gh_proxy_vercel"
+        name: "Github 代理"
+        tags: [vf]
+        type: "http"
+        url: "https://v-gh.072103.xyz/"
+        method: "HEAD"
+        timeout: 10000
+        expected_latency: 1000
+        grace_period: 3
+        display:
+          chart: true
+          public_link: true
+        validation:
+          status: 200
+
       - id: "eopfapi"
-        name: "随机图API（EdgeOne）"
+        name: "随机图API"
         tags: [eopf]
         type: "http"
         url: "https://eopfapi.acofork.com/pic/"
@@ -195,7 +210,7 @@ groups:
           status: 200
 
       - id: "eo_umami"
-        name: "Umami（EdgeOne Pages）"
+        name: "Umami 测试环境"
         tags: [eopf]
         type: "http"
         url: "https://eo-umami.acofork.com/"
@@ -210,7 +225,7 @@ groups:
           status: 200
 
       - id: "upload_to_s3"
-        name: "简单上传文件到S3（EdgeOne Pages）"
+        name: "简单上传文件到S3"
         tags: [eopf]
         type: "http"
         url: "https://u.2x.nz/"
@@ -225,7 +240,7 @@ groups:
           status: 200
 
       - id: "onedrive_index"
-        name: "OneDrive 公开只读（Vercel）"
+        name: "OneDrive 公开只读"
         tags: [vf]
         type: "http"
         url: "https://e3.2x.nz/"
@@ -240,7 +255,7 @@ groups:
           status: 200
 
       - id: "eo_http"
-        name: "网站安全测试（EdgeOne Pages）"
+        name: "网站安全测试"
         tags: [eopf]
         type: "http"
         url: "https://http.acofork.com/"
