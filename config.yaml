@@ -19,6 +19,12 @@ settings:
     - id: "eopage"
       label: "EdgeOne Page"
       color: "#2563EB"
+    - id: "esa"
+      label: "ESA CDN"
+      color: "#EC2626"
+    - id: "esapage"
+      label: "ESA Page"
+      color: "#EC2626"
     - id: "eo"
       label: "EdgeOne CDN"
       color: "#2563EB"
@@ -102,6 +108,21 @@ groups:
         tags: [eopage]
         type: "http"
         url: "https://eo-blog.acofork.com/"
+        method: "HEAD"
+        timeout: 60000
+        expected_latency: 1000
+        grace_period: 3
+        display:
+          chart: true
+          public_link: true
+        validation:
+          status: 200
+
+      - id: "blog_esa"
+        name: "博客国内节点"
+        tags: [esapage]
+        type: "http"
+        url: "https://esa-blog.acofork.com/"
         method: "HEAD"
         timeout: 60000
         expected_latency: 1000
