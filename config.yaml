@@ -1,7 +1,7 @@
 # Uptime Monitor Configuration
 
 settings:
-  title: "Acofork System Status"
+  title: "aloneowo`s System Status"
   logo: "https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0" # Optional: URL to your logo image
   callback_url: ""
   callback_secret: ""
@@ -104,7 +104,7 @@ groups:
         name: "博客国内节点"
         tags: [eopage]
         type: "http"
-        url: "https://eo-blog.acofork.com/"
+        url: "https://blog.aloneowo.dpdns.com/"
         method: "HEAD"
         timeout: 60000
         expected_latency: 1000
